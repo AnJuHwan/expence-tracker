@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import styles from './ExpenseForm.module.css';
 
-const ExpenseForm = ({ onSaveExpenseData }) => {
+const ExpenseForm = ({ onSaveExpenseData, stopEditingHandler }) => {
   const [enteredTitle, setEnteredTitle] = useState('');
   const [enteredAmount, setEnteredAmount] = useState('');
   const [enteredDate, setEnteredDate] = useState('');
+
   // const [userInput, setUserInput] = useState({
   //   enteredTitle: '',
   //   enteredAmount: '',
@@ -13,23 +14,14 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
 
   const titleChangeHandler = (event) => {
     setEnteredTitle(event.target.value);
-    // setUserInput({ ...userInput, enteredTitle: event.target.value });
-    // setUserInput((prevState) => {
-    //   return {
-    //     ...prevState,
-    //     enteredTitle: event.target.value,
-    //   };
-    // });
   };
 
   const amountChangeHandler = (event) => {
     setEnteredAmount(event.target.value);
-    // setUserInput({ ...userInput, enteredAmount: event.target.value });
   };
 
   const dateChangeHandler = (event) => {
     setEnteredDate(event.target.value);
-    // setUserInput({ ...userInput, enteredDate: event.target.value });
   };
 
   const submitHandler = (event) => {
@@ -42,6 +34,7 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
     };
 
     onSaveExpenseData(expenseData);
+
     setEnteredTitle('');
     setEnteredAmount('');
     setEnteredDate('');
@@ -79,8 +72,16 @@ const ExpenseForm = ({ onSaveExpenseData }) => {
           />
         </div>
       </div>
-      <div className={styles['new-expense__actions']}>
-        <button type='submit'>Add Expense</button>
+
+      <div className={styles.flex}>
+        <div className={styles['new-expense__actions']}>
+          <button type='button' onClick={stopEditingHandler}>
+            Cancle
+          </button>
+        </div>
+        <div className={styles['new-expense__actions']}>
+          <button type='submit'>Add Expense</button>
+        </div>
       </div>
     </form>
   );
