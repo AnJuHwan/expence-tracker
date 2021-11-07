@@ -29,7 +29,7 @@ const ExpenseForm = ({ onSaveExpenseData, stopEditingHandler }) => {
 
     const expenseData = {
       title: enteredTitle,
-      amount: enteredAmount,
+      amount: +enteredAmount,
       date: new Date(enteredDate),
     };
 
@@ -74,12 +74,11 @@ const ExpenseForm = ({ onSaveExpenseData, stopEditingHandler }) => {
       </div>
 
       <div className={styles.flex}>
+        <div className={styles['new-expense__actions']}></div>
         <div className={styles['new-expense__actions']}>
           <button type='button' onClick={stopEditingHandler}>
             Cancle
           </button>
-        </div>
-        <div className={styles['new-expense__actions']}>
           <button type='submit'>Add Expense</button>
         </div>
       </div>
