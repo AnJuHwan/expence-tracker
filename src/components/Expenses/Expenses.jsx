@@ -6,7 +6,7 @@ import styles from './Expenses.module.css';
 import ExpensesChart from './ExpensesChart.jsx';
 import ExpensesList from './ExpensesList.jsx';
 
-const Expenses = ({ expenses }) => {
+const Expenses = ({ expenses, removeExpense }) => {
   const [filteredYear, setFiteredYear] = useState('2020');
   const filterChangeHandler = (selectedYear) => {
     setFiteredYear(selectedYear);
@@ -16,6 +16,10 @@ const Expenses = ({ expenses }) => {
     return expense.date.getFullYear().toString() === filteredYear;
   });
 
+  const removeExpenseHandler = (expense) => {
+    removeExpense(expense);
+  };
+
   return (
     <>
       <Card className={styles.expenses}>
@@ -24,7 +28,11 @@ const Expenses = ({ expenses }) => {
           onChangeFilter={filterChangeHandler}
         />
         <ExpensesChart expenses={filteredExpenses} />
-        <ExpensesList filteredExpenses={filteredExpenses} />
+        <ExpensesList
+          expenses={expenses}
+          filteredExpenses={filteredExpenses}
+          removeExpense={removeExpenseHandler}
+        />
       </Card>
     </>
   );

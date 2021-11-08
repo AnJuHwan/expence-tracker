@@ -38,10 +38,14 @@ function App() {
     });
   };
 
+  const removeExpenseHandler = (expense) => {
+    setExpenses(expense);
+  };
+
   return (
     <>
       <NewExpense onAddExpense={addExpenseHandler} />
-      <Expenses expenses={expenses} />
+      <Expenses expenses={expenses} removeExpense={removeExpenseHandler} />
     </>
   );
 }
