@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useState } from 'react';
 import Card from '../UI/Card.jsx';
 import ExpenseFilter from './ExpenseFilter.jsx';
 import styles from './Expenses.module.css';
@@ -23,10 +22,7 @@ const Expenses = ({ expenses, removeExpense }) => {
   return (
     <>
       <Card className={styles.expenses}>
-        <ExpenseFilter
-          seleted={filteredYear}
-          onChangeFilter={filterChangeHandler}
-        />
+        <ExpenseFilter seleted={filteredYear} onChangeFilter={filterChangeHandler} />
         <ExpensesChart expenses={filteredExpenses} />
         <ExpensesList
           expenses={expenses}

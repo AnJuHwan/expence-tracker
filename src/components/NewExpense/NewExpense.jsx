@@ -1,5 +1,4 @@
-import React from 'react';
-import { useState } from 'react/cjs/react.development';
+import React, { useState } from 'react';
 import ExpenseForm from './ExpenseForm';
 import styles from './NewExpense.module.css';
 
@@ -26,9 +25,7 @@ const NewExpense = ({ onAddExpense }) => {
 
   return (
     <div className={styles['new-expense']}>
-      {!isEditing && (
-        <button onClick={startEditingHandler}>Add New Expense </button>
-      )}
+      {!isEditing && <button onClick={startEditingHandler}>Add New Expense </button>}
       {isEditing && (
         <ExpenseForm
           onSaveExpenseData={onSaveExpenseData}
